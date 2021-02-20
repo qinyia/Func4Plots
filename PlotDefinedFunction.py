@@ -1,3 +1,7 @@
+import matplotlib as mpl
+from matplotlib import ticker
+from mpl_toolkits.axes_grid1 import make_axes_locatable
+
 # ==========================================================================================================================
 def make_colorbar(ax, units, fh, mappable, **kwargs):
     '''
@@ -6,9 +10,6 @@ def make_colorbar(ax, units, fh, mappable, **kwargs):
     units: the unit of colorbar
     fh: fontsize of colorbar label font size
     '''
-    from mpl_toolkits.axes_grid1 import make_axes_locatable
-    import matplotlib as mpl
-
     divider = make_axes_locatable(ax)
     orientation = kwargs.pop('orientation', 'vertical')
     if orientation == 'vertical':
