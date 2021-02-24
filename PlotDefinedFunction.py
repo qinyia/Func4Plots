@@ -55,3 +55,29 @@ def add_common_colorbar(fig,im,axes,units,orientation='vertical',nbins=9,fontsiz
     cb.locator = tick_locator
     cb.update_ticks()
     
+# ==========================================================================================================================
+
+def create_nested_dict_ND(n, type):
+    '''
+    Jan 27, 2021:
+    create a nested dictionary with number of dimensions and type.
+    inputs:
+    n -- number of dimension for new dictionary
+    type -- type of each element, like float, str
+    '''
+    from collections import defaultdict
+    if n == 1:
+        return defaultdict(type)
+    else:
+        return defaultdict(lambda: create_nested_dict_ND(n-1, type))
+
+# ==========================================================================================================================
+
+def create_nested_dict():
+    ''' 
+    Jan 27, 2021:
+    create a nested dictionary with no limit on dimensions and type.
+    ref: https://stackoverflow.com/questions/5369723/multi-level-defaultdict-with-variable-depth/8702435#8702435
+    '''
+    from collections import defaultdict
+    return defaultdict(lambda: create_nested_dict())
